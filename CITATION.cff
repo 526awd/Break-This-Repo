@@ -1,13 +1,23 @@
-cff-version: 1.1.4
-message: "If you use this intentionally breakable repository, please cite it."
-title: "Break This Repository: A Collaborative Destruction Experiment"
+cff-version: 1.2.0
+message: "如果你要引用这个仓库，请用它应得的方式引用它。"
+title: "Break-This-Repo: I HAS A REPO. REPO IS NOW A LOLCODE PROGRAM."
 type: software
-
 authors:
-  - name: "Break This Repo Contributors"
-
+  - name: "KrisTHL181 与 182 位匿名 forker"
+version: "16.2.0"
+date-released: "2026-09-30"
 repository-code: "https://github.com/KrisTHL181/Break-This-Repo"
 url: "https://github.com/KrisTHL181/Break-This-Repo"
-
-version: "0.0.0-broken"
-date-released: "2026-08-30"
+abstract: >-
+  一个自我声明为「自动合并没有冲突的 PR」的公开游乐场。
+  它最终长到了 16.2 GB / 1,577,501 个文件，
+  并因此在 GitHub 上失去了语言统计条（Linguist 放弃治疗）。
+  现在它的贡献指南、行为准则与安全政策全部由 LOLCODE 编写，且可执行。
+  本条目存在的直接原因是：让仓库侧栏多出一个「Cite this repository」按钮。
+keywords:
+  - lolcode
+  - esoteric-language
+  - break-this-repo
+  - github-playground
+  - linguist
+license: other

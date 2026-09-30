@@ -1,3 +1,63 @@
+<!-- ══════════════════════════════════════════════════════════════════════
+     🍔 LOLCODE 宪法接管 · 第 2 号修正案
+
+     这份文件的可读正文已由 LOLCODE 版本前置。
+     原文一字未删，完整折叠在下方 <details> 里。
+     完全 revert 的方法：删掉本块（从这一行到 <details> 之前）。
+     ══════════════════════════════════════════════════════════════════════ -->
+
+## 🍔 LOLCODE 宪法接管 · CODE_OF_CONDUCT
+
+> [!CAUTION]
+> **本文件从今天起是可执行的。**
+> 跑 `python LOLCODE/lolrun.py LOLCODE/CODE_OF_CONDUCT.lol` 就知道了。
+
+它跑出来是这样：
+
+```text
+############################################################
+#                                                          #
+#        Break-This-Repo  行为准则  ·  LOLCODE 版           #
+#                                                          #
+############################################################
+
+  第 1 条  这里是一个游乐场，不是一个法外之地。
+  第 2 条  你可以整活，但你得让人知道怎么围观你的整活。
+  第 3 条  门面还是要的。别把首页变成奇怪东西。
+  第 4 条  别往这里灌 OpenJDK 全量源码。它已经 16 GB 了。
+
+  第 5 条  以下是三条真正的红线。逐条审判：
+
+  关于「凭据」：
+    禁止。这条是认真的。
+
+  关于「病毒」：
+    禁止。这条也是认真的。
+
+  关于「个人信息」：
+    禁止。人肉不是乐子。
+
+  关于「往 README 里贴自己的博客链接」：
+    允许。而且鼓励。
+
+  第 6 条  违反前三条中的任何一条，维护者有权把账号举报掉。
+          —— 这条不是我写的。README 第 38 行原文如此，
+             对象是某个反复贴垃圾广告的人。
+
+  KTHXBAI.
+```
+
+**为什么动这里：** 这份文件在仓库页的「Code of conduct」标签下。它原本是一篇吐槽 PR 模板的杂文，现在它是一份**会逐条审判你**的 LOLCODE 程序。
+
+**怎么观察：** 跑上面那行命令；再跑 `python LOLCODE/lolrun.py --selftest` 确认解释器是活的。
+
+**声明：** 我声明，这个仓库的**行为准则**已成功被我进行了 breaking change。原因是我乱写的，而且不必须。
+
+---
+
+<details>
+<summary><b>📄 原文从这里开始（一字未删，点开即读）</b></summary>
+
 ## PR模板
 
 这 PR 模板已经不能叫模板了，应该叫 《Break-This-Repo 异常收容申请书》。
@@ -56,3 +116,8 @@
 ```base64
 VGhpcyBwcm9qZWN0IGhhcyBhZG9wdGVkIHRoZSBbTWljcm9zb2Z0IE9wZW4gU291cmNlIENvZGUgb2YgQ29uZHVjdF0oaHR0cHM6Ly9vcGVuc291cmNlLm1pY3Jvc29mdC5jb20vY29kZW9mY29uZHVjdC8pLiBGb3IgbW9yZSBpbmZvcm1hdGlvbiBzZWUgdGhlIFtDb2RlIG9mIENvbmR1Y3QgRkFRXShodHRwczovL29wZW5zb3VyY2UubWljcm9zb2Z0LmNvbS9jb2Rlb2Zjb25kdWN0L2ZhcS8pIG9yIGNvbnRhY3QgW29wZW5jb2RlQG1pY3Jvc29mdC5jb21dKG1haWx0bzpvcGVuY29kZUBtaWNyb3NvZnQuY29tKSB3aXRoIGFueSBhZGRpdGlvbmFsIHF1ZXN0aW9ucyBvciBjb21tZW50cy4K
 ```
+
+
+</details>
+
+<!-- ══════════════════ LOLCODE 宪法接管 · 结束 ══════════════════ -->
