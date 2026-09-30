@@ -1071,6 +1071,9 @@ https://xundei.qzz.io/
 
 > 个人小博客，欢迎交换友链
 
+https://blog.iamexrfy.top
+
+> 一个神秘的土豆服务器搭的博客来了
 ---
 
 # Debian --通用操作系统
