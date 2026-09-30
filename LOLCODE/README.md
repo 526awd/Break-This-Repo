@@ -171,3 +171,40 @@ python lolrun.py CHEEZBURGER.lol | diff - CHEEZBURGER.lol.expected.txt && echo "
 VISIBLE "I HAS A POINT. ITZ '语言条死了，但乐子还活着。'"
 KTHXBAI
 ```
+
+---
+
+## 8. 宪法接管（第 2 号修正案）
+
+光改 README 是不够的 —— 那只是门面。这个仓库真正对外的**宪法文件**，也已经被接管了：
+
+| 文件 | GitHub 上在哪 | 谁看得到 |
+| --- | --- | --- |
+| `CONTRIBUTING.md` | **每个新 PR 作者开 PR 时，GitHub 都会把这份文件推到他脸上** | 所有贡献者 |
+| `CODE_OF_CONDUCT.md` | 仓库页「Code of conduct」标签 | 所有访客 |
+| `SECURITY.md` | 仓库页「Security」标签 | 所有访客 |
+| `CITATION.cff` | 让仓库侧栏多出一个 **「Cite this repository」** 按钮 | 所有访客 |
+
+规矩是：**原文一字未删**，只是被折叠进了 `<details>` 里，可随时展开阅读，
+删掉文件顶部的那一块即可完全 revert。
+
+而被放到顶部的正文，是**可执行的**：
+
+```bash
+python LOLCODE/lolrun.py LOLCODE/CONTRIBUTING.lol
+python LOLCODE/lolrun.py LOLCODE/CODE_OF_CONDUCT.lol
+python LOLCODE/lolrun.py LOLCODE/SECURITY.lol
+```
+
+也就是说：**这个仓库的行为准则，现在是一个能跑的程序。**
+`CODE_OF_CONDUCT.lol` 会逐条审判「凭据 / 病毒 / 个人信息」并给出判词，
+`SECURITY.lol` 会逐项审计威胁模型，`CONTRIBUTING.lol` 会告诉你它会不会自动合并你的 PR。
+
+这也是对社区自己定下的两条规矩的遵守：
+
+> · **解释怎么观察** —— 上面三行就是观察方法
+> · **声明「已成功 breaking change」** —— 见下方
+ 
+> 我声明：这个仓库的贡献流程、行为准则与安全政策，已成功被我进行了 breaking change。
+> 然后原因还是我乱写的并且不必须。
+
